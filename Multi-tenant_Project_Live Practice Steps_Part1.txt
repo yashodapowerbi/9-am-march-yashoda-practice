@@ -1,16 +1,18 @@
 1. Download all files from Github link and keep in a folder [C:\Multi-Tenant]
+        ********************************************************
 	https://github.com/vinaytechhouse/Multi-Tenant-Files.git
+        *********************************************************
 
-
-
+*******************************************************************************************
 2. Open the data file  "Multi Customer DWH-Tabular Cube Data.xlsx" and go through the tables.
-	
+*******************************************************************************************	
 	Here sales is fact table and other are dimensions.
 	Major measures in the sales table are "Order Quantity, Line Total, Total Unit Cost"
-
+               *******************
 		Order Quantity: 5
 		Line TOtal: 6
 		Total Unit Cost: 5*6=30
+               ************************
 
 
 
@@ -25,7 +27,9 @@
 
 
 
-
+*************************************************
+These are the steps to practice real time project 
+*****************************************************
 
 
 
