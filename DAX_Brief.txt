@@ -1,0 +1,168 @@
+If you want to perform Sum, Avg, Max, Min,Count, DistinctCount, Summarize, Don't summarize etc.
+NO NEED OF ANY LANGAUGE AND CALCULATIONS, OTHER THAN THOSE REQUIRE A LANGUAGE CALLED "DAX".
+
+********************************************
+DAX: Data Analysis Expressions
+Why? Modeling and analysis
+Modeling? Relationships and Directions 
+Analysis? Aggregate (sum, avg, count etc.) and Analytical (Rank, Stddev, NormT etc.)
+What type? Functional or Formula Language [more and more functions available]
+	Note: It is not a programming language
+******************
+What it contains?
+	Similar to other languages, it has a few common elements and more easy understandable functions
+	a) Identifier: Name, No of chars, Acceptable chars etc.
+	b) Data Type: Type of data is required
+	c) Operators: Arithemetic, Mathematical, Text, Concat etc.
+	d) Functions: Around 12 categories of functions
+		Ex:
+		Date functions: Dates and Date parts operations
+		Text functions: Textual operations
+		Statistical Functions: Statistical operations etc.
+What we do?
+	We will create 
+	a) Calculated Measure: Measure: Which holds single value after calculation
+	b) Calculated Column: Which hold set of values in a column
+	c) Calculated Table: Which contain multiple columns
+
+Do we need to write formulas for our expressions?
+	It is good to write, if you want to use MS given formulas, then go for "Quick Measure" concept.
+
+
+==============================================================================
+FREQUNTLY USED FUNCTIONS AND FORMULAS
+
+a) Division formulas
+b) Previous intervals 
+c) Next intervals
+d) Sameperiodlastyear business values
+e) CUmulative totals / runnind totals
+g) Growth
+h) Growth Per
+i) Required data / each row  aggregation etc.
+==============================================================================
+*******************************
+Braces:
+
+(--function arguments start
+)-function arguments end
+
+{-row / rows start
+}-row / rows end
+
+[-indicate column or measure
+]-indicate column or measure close
+
+
+*******************************
+Filter: FIlters the data in a table or expression and returns set of rows.
+	Syn: Filter(Tablename, expression)
+	Based on the expression table data validated and return rows.
+
+==========================================================================
+Sum, Avg, Max, Min, Count, Product (multiplication) etc. perform complete column operation and returns single value.
+
+These are context (situation)based. They support filter, row, column, multi column etc. contexts.
+
+Syn: Sum /Avg/Max/Min/Count/Product   (columnname)
+Ex:
+Q: Total Business Value
+A: Sum(FactTable[Discount_Fee])
+
+Q: Avg Business Value
+A: Average(FactTable[Discount_Fee])
+
+Q: Max Business Value
+A: Max(FactTable[Discount_Fee])
+
+Note: The above functions display the result based on the passing categories
+	If we pass hyd location, then hyd sum, avg, max
+	If we pass hyd and dept 10, then hyd and dept 10 sum, avg, max etc.
+==========================================================================
+Sumx, Avgx, Maxx, Minx, Countx, Productx (multiplication) etc. 
+x-indicate expression based. If you want calculation based on expression these functions are helpful.
+
+Syn: Sumx /Avgx/Maxx/Minx/Countx/Productx   (<expression>, tablename[columnname])
+Ex:
+Q: Total Business Value
+A: Sumx(FactTable, FactTable[Discount_Fee])
+
+Q: Avg Business Value
+A: Averagex(FactTable,FactTable[Discount_Fee])
+
+Q: Max Business Value
+A: Maxx(FactTable, FactTable[Discount_Fee])
+
+Q: Total Business Value for hyderabad location
+A: Sumx(filter(FactTable, FactTable[Locid]="HYD"), FactTable[Discount_Fee])
+
+Q: Total Business Value for hyderabad location
+A: Sumx(filter(FactTable, FactTable[Locid]="HYD"), FactTable[Discount_Fee])
+
+Q: Avg Business Value for course mode "online"
+A: Averagex(filter(FactTable, FactTable[Modeid]="Online"), FactTable[Discount_Fee])
+
+Q: FOr each course total business generated
+	Sumx is required for each course wise operation [look at the practical]
+	Note: Sum does not work as it shows complete column total.
+==============================================================================
+Whn do you go for sum/avg/max etc. and sumx/avg/maxx etc.?
+
+If you need complete total and context based total, then prefer without 'x' functions.
+
+If you need expression based (required rows or columns) calculation and each row wise calculation, then prefer 'x' functions
+==============================================================================
+Calculate: Perform calculations (any calculation) based on expression (any expression) and returns single value.
+	Syn:
+	Calculate(<expression>, filter1, filter2,...)
+
+	Note: Completely different from the above functions.
+==============================================================================
+
+PreviousYear/PreviousQuarter/PreviousMonth: To go to previous periods
+	Syn:PreviousYear/PreviousQuarter/PreviousMonth(<datecolumn>,<enddate>)
+
+NextYear/NextQuarter/NextMonth: To go to next periods
+	Syn:NextYear/NextQuarter/NextMonth(<datecolumn>,<enddate>)
+
+Two previous years information: Previousyear(previousyear(....))
+
+Two Next Years information: Nextyear(nextyear(...))
+
+Note: For multiple previous and next intervals use ParallelPeriod function
+
+ParallelPeriod: Move forward or backward to the given number of intervals
+	Syn: Parallelperiod(<datecolum, interval, intervaltype)
+	
+	- value indicate previous periods
+	+ value indicate next periods
+
+SameperiodLastyear: In the given date same period last year information.
+	Ex:
+	Today is 19-02-2024:   Sameperiodlastyear "Year filter":  2023
+	Today is 19-02-2024:   Sameperiodlastyear "month filter":  02-2023
+	Today is 19-02-2024:   Sameperiodlastyear "day filter":  19-02-2023
+===========================================================================
+Growth:
+	Current-Last
+Ex: Current year value: 30000, Last Year Value: 20000, then Growth=30000-20000=10000
+============================================================================
+Growth Percentage:
+	Growth/Lastyear * 100
+Growth Per=10000/20000*100=1/2*100=50%
+
+============================================================================
+Cumulative total / Running total:
+
+	FOr each category if you show the current value + previous categories value, then it is cumulative or running total.
+	Ex:
+	Year,Value, Cumulative
+	2017,10000, 10000
+	2018, 5000, 15000
+	2019, 6000, 21000
+============================================================================
+Quotient, Mod, Division
+
+5 mod 2: 1 : Mod(5,2)
+5 Quotient 2: 2: Quotient(5,2)
+5 Divide 2: 2.5: Divide(5,2)

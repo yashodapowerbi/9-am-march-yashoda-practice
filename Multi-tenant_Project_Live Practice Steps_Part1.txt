@@ -1,0 +1,120 @@
+1. Download all files from Github link and keep in a folder [C:\Multi-Tenant]
+	https://github.com/vinaytechhouse/Multi-Tenant-Files.git
+
+
+
+2. Open the data file  "Multi Customer DWH-Tabular Cube Data.xlsx" and go through the tables.
+	
+	Here sales is fact table and other are dimensions.
+	Major measures in the sales table are "Order Quantity, Line Total, Total Unit Cost"
+
+		Order Quantity: 5
+		Line TOtal: 6
+		Total Unit Cost: 5*6=30
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. Open Power BI Desktop, Get Data-> Connect to the above excel-> Choose the below tables
+		Sales, Date, Product, Region, Customer 
+
+4. Go to Date table, first column (Date column), change tge data type to "Date"
+	Note: Highlight the column, on top bar, choose data type "Date" instead of whole number
+5. Go to Model view and establish relationship between tables.
+
+		Sales(OrderDate)-> Date(Date)
+		Sales(Customer Name Index)-> CUstomer(Customer Index)
+		Sales(Product Description Index)->Product(Index)
+		Sales(Delivery Region Index)-> Region(Index)
+6. Create four pages with the below names
+		Main Page
+		Customer Data Trend
+		Customer Profitability
+		Customer Segmentation
+
+7. Go to "Main page" and do the below
+
+		1)Page Settings-> Canvas Background->Back Ground Image-> Choose Page color fom the downloaded file
+
+					Image Size: Fit, Transparency: 0
+
+
+
+		2)Take a textbox-> Font color "white", size "20", Specify text " Customer Data Trend", 
+				Go to General Settings-> Effects-> Back Ground-> Choose close to the page color green
+
+		3)Copy and paste the above textbox and specify the below text
+		
+					"Customer Profitability"
+
+
+		4)Copy and paste the above textbox and specify the below text
+		
+					"Customer Segmentation"
+
+
+
+		5)Take three images and place on the main page.
+		
+		Arrange images and textboxes like below.
+
+		6)Go to each image-> Action-> Page Navigation Action->Specify the appropriate page.
+
+			Customers image-> Action-> Page Navigation Action->Specify Customer Data Trend page.
+
+			Customers Profitability-> Action-> Page Navigation Action->Specify Customer Profitability page.
+			Customers Segmentation-> Action-> Page Navigation Action->Specify Customer Segmentation 						page
+
+8. Go to Customer Data Trend, Customer Profitability, Customer Segmentation and take the below
+		a) Back Button in all pages (Insert menu-> Buttons->Back button)
+		b) Date Table-> right click-> New column-> write the below expression and save
+					Quarter = "Q" & QUARTER([Date])
+
+		b) Customer Data Trend:
+
+					slicer: Date(Year): Format Settings, Style: Tile, Slicer Header : OFF
+					Slicer: Date(Quarter): Format Settings, Style: Tile, Slicer Header : OFF
+
+					View menu-> Sync Slicer-> Select Year Slicer, enable Customer Segmentation, Customer 									Profitability for view and refresh
+
+
+					View menu-> Sync Slicer-> Select Quarter Slicer, enable Customer 							Segmentation, Customer 													Profitability for view and refresh
+
+9. Ensure	Sync slicing working perfectly across pages
+		select in one page one year and quarter, the same effect should be there in other pages
+
+10. Go to main page, control + enter on any image, it should go to the respective page. When we click the back button
+
+		it has to go to the main page.
+
+
+==============================================================
+13_04-2024
+==============================================================
+
+
+
+
+
+
+
+
+
+
+
+		
+
