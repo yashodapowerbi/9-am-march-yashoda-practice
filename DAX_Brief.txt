@@ -1,14 +1,16 @@
-If you want to perform Sum, Avg, Max, Min,Count, DistinctCount, Summarize, Don't summarize etc.
-NO NEED OF ANY LANGAUGE AND CALCULATIONS, OTHER THAN THOSE REQUIRE A LANGUAGE CALLED "DAX".
-
+****If you want to perform Sum, Avg, Max, Min,Count, DistinctCount, Summarize, Don't summarize etc.
+NO NEED OF ANY LANGAUGE AND CALCULATIONS, OTHER THAN THOSE REQUIRE A LANGUAGE CALLED "DAX".****
+===================================================================================================
+Dax means Data analysis Expressions
 ********************************************
 DAX: Data Analysis Expressions
+===============================
 Why? Modeling and analysis
 Modeling? Relationships and Directions 
 Analysis? Aggregate (sum, avg, count etc.) and Analytical (Rank, Stddev, NormT etc.)
 What type? Functional or Formula Language [more and more functions available]
 	Note: It is not a programming language
-******************
+*********************************************
 What it contains?
 	Similar to other languages, it has a few common elements and more easy understandable functions
 	a) Identifier: Name, No of chars, Acceptable chars etc.
@@ -43,10 +45,10 @@ i) Required data / each row  aggregation etc.
 ==============================================================================
 *******************************
 Braces:
-
+**************************
 (--function arguments start
 )-function arguments end
-
+=========================
 {-row / rows start
 }-row / rows end
 
